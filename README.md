@@ -8,20 +8,25 @@ Linear congruential generator (http://en.wikipedia.org/wiki/Linear_congruential_
 
 MWC and LCG come with 3 pre-defined parameters.
 
+```lua
 m = twister(seed) - Create a generator.  
+```
 
-Usually it's better to initialize the generators without params. m = twister() use os.time() for seed.
-A seed must be given when choosing the LCG params, as in l3 = lcg(0, 'mvc'). After that, call l3:randomseed()
+Usually it's better to initialize the generators without params. `m = twister()` use `os.time()` for seed.
+A seed must be given when choosing the LCG params, as in `l3 = lcg(0, 'mvc')`. After that, call `l3:randomseed()`
 
+```lua
 :random() returns a float between 0 and 1.
 :random(max) returns an integer between 1 and max
 :random(min, max) returns an integer between min and max
 :random(0) return the original 31 (twister) or 16 (lcg and mwc) bits integer.
 
 :randomseed(seed) to change seed. Again, randomseed() call os.time().
+```
 
 Code example:  
 
+```lua
 require('randomlua')  
 
 l1 = lcg(0) -- Linear congruential generator (Ansi C params)  
@@ -35,3 +40,4 @@ m = twister(0) -- Mersenne twister
 for n = 1, 10 do  
    io.write(string.format("%8d%8d%8d%8d%8d%8d%16u\n", l1:random(0), l2:random(0), l3:random(0), c1:random(0), c2:random(0), c3:random(0), m:random(0)))  
 end
+```
