@@ -53,6 +53,7 @@ local function seed()
 end
 
 --Mersenne twister
+local
 mersenne_twister = {}
 mersenne_twister.__index = mersenne_twister
 
@@ -90,6 +91,7 @@ function mersenne_twister:random(a, b)
 	end
 end
 
+local
 function twister(s)
 	local temp = {}
 	setmetatable(temp, mersenne_twister)
@@ -100,6 +102,7 @@ function twister(s)
 end
 
 --Linear Congruential Generator
+local
 linear_congruential_generator = {}
 linear_congruential_generator.__index = linear_congruential_generator
 
@@ -120,6 +123,7 @@ function linear_congruential_generator:randomseed(s)
 	self.x = normalize(s)
 end
 
+local
 function lcg(s, r)
 	local temp = {}
 	setmetatable(temp, linear_congruential_generator)
@@ -133,6 +137,7 @@ function lcg(s, r)
 end
 
 -- Multiply-with-carry
+local
 multiply_with_carry = {}
 multiply_with_carry.__index = multiply_with_carry
 
@@ -157,6 +162,7 @@ function multiply_with_carry:randomseed(s)
 	self.x = normalize(s)
 end
 
+local
 function mwc(s, r)
 	local temp = {}
 	setmetatable(temp, multiply_with_carry)
@@ -169,3 +175,5 @@ function mwc(s, r)
 	temp:randomseed(s)
 	return temp
 end
+
+return {mwc=mwc, lcg=lcg, twister=twister}

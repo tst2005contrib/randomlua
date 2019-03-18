@@ -1,12 +1,14 @@
-require('randomlua')
+local randomlua = require('randomlua')
+local lcg, mwc, twister = randomlua.lcg, randomlua.mwc, randomlua.twister
 
-l1 = lcg(0) -- Linear congruential generator (Ansi C params)
-l2 = lcg(0, 'nr') --Linear congruential generator (Numerical recipes params)
-c1 = mwc(0) -- Multiply-with-carry (Ansi C params)
-c2 = mwc(0, 'nr') -- Multiply-with-carry (Numerical recipes params)
-m = twister(0) -- Mersenne twister
+local l1 = lcg(0) -- Linear congruential generator (Ansi C params)
+local l2 = lcg(0, 'nr') --Linear congruential generator (Numerical recipes params)
+local l3 = lcg(0, 'mvc') -- Linear congruential generator (Microsoft Visual C params)
+local c1 = mwc(0) -- Multiply-with-carry (Ansi C params)
+local c2 = mwc(0, 'nr') -- Multiply-with-carry (Numerical recipes params)
+local c3 = mwc(0, 'mvc') -- Multiply-with-carry (Microsoft Visual C params)
+local m = twister(0) -- Mersenne twister
 
 for n = 1, 10 do
-   io.write(string.format("%8u%8u%8u%8u%16u\n", l1:random(0), l2:random(0), c1:random(0), c2:random(0), m:random(0)))
+io.write(string.format("%8d%8d%8d%8d%8d%8d%16u\n", l1:random(0), l2:random(0), l3:random(0), c1:random(0), c2:random(0), c3:random(0), m:random(0)))
 end
-
